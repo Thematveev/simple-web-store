@@ -2,16 +2,39 @@
     padding-top: 14px;
 }
 
+.catalog__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .catalog__item {
-    /* border: 1px solid black; */
-    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.38);
     height: 430px;
-    width: 280px;
+
+    width: calc(100% / 4);
+    min-width: 250px;
 
     position: relative;
-
-    border-radius: 0 0 0 16px;
+    border-radius: 16px;
     overflow: hidden;
+    padding: 10px;
+}
+
+@media (max-width: 1015px) {
+    .catalog__item {
+        width: calc(100% / 3);
+    }
+}
+
+@media (max-width: 765px) {
+    .catalog__item {
+        width: calc(100% / 2);
+    }
+}
+
+@media (max-width: 515px) {
+    .catalog__item {
+        width: 100%;
+    }
 }
 
 .catalog__image {
@@ -36,13 +59,47 @@
 .catalog__btn {
     display: block;
     height: 50px;
-    width: 50px;
-    background-color: black;
+    width: 120px;
+
     color: white;
     position: absolute;
     bottom: 0;
     left: 0;
     font-size: 45px;
     font-weight: 100;
-    border-radius: 0 16px 0 0;
+    border-radius: 0 16px;
+    overflow: hidden;
+    border: 2px solid black;
+}
+
+.catalog__btn > div {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.3s;
+}
+
+.catalog__btn:hover div {
+    transform: translateY(-51px);
+}
+
+.catalog__btn:hover {
+}
+
+.catalog__price {
+    display: block;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.catalog__price::before {
+    content: "₴";
+    margin-right: 5px;
 }
