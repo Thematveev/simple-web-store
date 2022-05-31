@@ -3,37 +3,45 @@
 }
 
 .catalog__wrapper {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media (max-width: 900px) {
+    .catalog__wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .catalog__wrapper {
+        grid-template-columns: 1fr;
+    }
 }
 
 .catalog__item {
     height: 430px;
-
-    width: calc(100% / 4);
-    min-width: 250px;
-
     position: relative;
-    border-radius: 16px;
     overflow: hidden;
     padding: 10px;
+    padding-top: 22px;
+    border-bottom: 1px solid rgb(169, 169, 169);
+    border-right: 1px solid rgb(169, 169, 169);
 }
 
-@media (max-width: 1015px) {
-    .catalog__item {
-        width: calc(100% / 3);
+.catalog__item:nth-child(4n + 4) {
+    border-right: none;
+}
+
+@media (max-width: 900px) {
+    .catalog__item:nth-child(2n + 2) {
+        border-right: none;
     }
 }
 
-@media (max-width: 765px) {
-    .catalog__item {
-        width: calc(100% / 2);
-    }
-}
-
-@media (max-width: 515px) {
-    .catalog__item {
-        width: 100%;
+@media (max-width: 500px) {
+    .catalog__item:nth-child(1n + 1) {
+        border-right: none;
     }
 }
 
@@ -60,36 +68,26 @@
     display: block;
     height: 50px;
     width: 120px;
-
     color: white;
     position: absolute;
+    background-color: black;
     bottom: 0;
     left: 0;
     font-size: 45px;
+    line-height: 45px;
     font-weight: 100;
-    border-radius: 0 16px;
     overflow: hidden;
-    border: 2px solid black;
-}
-
-.catalog__btn > div {
-    background-color: black;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: 0.3s;
-}
-
-.catalog__btn:hover div {
-    transform: translateY(-51px);
+    cursor: pointer;
+    transition: 0.2s;
 }
 
 .catalog__btn:hover {
+    border-radius: 0 16px 0 0;
+    background-color: rgb(10, 189, 10);
+}
+
+.catalog__btn:active {
+    transform: scale(1.05);
 }
 
 .catalog__price {
