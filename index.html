@@ -7,12 +7,17 @@
         <title>Online shop</title>
         <link rel="stylesheet" href="./css/main.css" />
         <script src="./js/catalog.js" defer></script>
+        <script src="./js/cart.js" defer></script>
     </head>
     <body>
         <header>
             <div class="wrapper">
                 <div class="header__wrapper">
                     <h1 class="header__title">Multi shop</h1>
+                    <button class="header__cart">
+                        <img src="./icons/shopping-cart.png" alt="cart" />
+                        <span>0</span>
+                    </button>
                 </div>
             </div>
         </header>
@@ -33,5 +38,11 @@
                 </div>
             </div>
         </section>
+        <div class="cart-dialog">
+            <button class="cart-dialog__close">
+                <img src="./icons/close.png" alt="close" />
+            </button>
+            <h2 class="cart-dialog__title">Your cart</h2>
+        </div>
     </body>
 </html>

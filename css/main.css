@@ -2,6 +2,7 @@
 @import url("./reset.css");
 @import url("./header.css");
 @import url("./catalog.css");
+@import url("./cart_dialog.css");
 
 .wrapper {
     max-width: 1440px;

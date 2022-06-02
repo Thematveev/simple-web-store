@@ -1,4 +1,8 @@
 const link = "https://dummyjson.com/products";
+let shopData = getCatalogData();
+let cart = [];
+
+const cw = document.querySelector(".catalog__wrapper");
 
 function getCatalogData() {
     let request = new XMLHttpRequest();
@@ -9,9 +13,10 @@ function getCatalogData() {
     return data.products;
 }
 
-function createItemElement(img, name, price) {
+function createItemElement(img, name, price, id) {
     let item = document.createElement("div");
     item.classList.add("catalog__item");
+    item.setAttribute("data", id);
 
     let inner = `<div class="catalog__image">
                             <img
@@ -25,13 +30,32 @@ function createItemElement(img, name, price) {
 
     item.innerHTML = inner;
 
+    item.querySelector(".catalog__btn").addEventListener("click", () => {
+        addToCartHandler(id);
+    });
+
     return item;
 }
 
-const cw = document.querySelector(".catalog__wrapper");
-let shopData = getCatalogData();
+function renderCart() {
+    document.querySelector(".header__cart>span").innerHTML = cart.length;
+}
 
-shopData.forEach((element) => {
-    let it = createItemElement(element.thumbnail, element.title, element.price);
-    cw.appendChild(it);
-});
+function addToCartHandler(id) {
+    cart.push(id);
+    renderCart();
+}
+
+function fullFill() {
+    shopData.forEach((element) => {
+        let it = createItemElement(
+            element.thumbnail,
+            element.title,
+            element.price,
+            element.id
+        );
+        cw.appendChild(it);
+    });
+}
+
+fullFill();
